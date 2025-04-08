@@ -1,26 +1,37 @@
+// App.tsx
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import Home from './pages/Home';
+import Riwayat from './pages/RiwayatPeminjaman';
+import Profil from './pages/ProfilUser';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
-function App() {
+const AppContent = () => {
+  const location = useLocation();
+  const hideLayout = location.pathname === '/register' || location.pathname === '/login';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {!hideLayout && <Navbar />}
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/riwayat" element={<Riwayat />} />
+        <Route path="/profil" element={<Profil />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
+      </Routes>
+
+      {!hideLayout && <Footer />}
+    </>
   );
-}
+};
+
+const App = () => { 
+  return <AppContent />;
+};
 
 export default App;
