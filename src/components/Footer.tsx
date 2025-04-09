@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <i className="bi bi-people"></i>
           <i className="bi bi-youtube"></i>
         </div>
-        <p>Copyright ©2025 by Kelompok Framework</p>
+        <p>Copyright ©2025 by RoomTech</p>
       </div>
     </footer>
   );

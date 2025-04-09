@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './RegisterPage.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { Link } from "react-router-dom";
 
 const RegisterPage = () => {
   const [userType, setUserType] = useState<'civitas' | 'umum'>('civitas');
@@ -24,15 +25,17 @@ const RegisterPage = () => {
     <div className="row min-vh-100 w-100 g-0">
       {/* Left Section */}
       <div className="col-md-4 d-flex flex-column position-relative text-white bg-purple px-5 py-4">
-        <img
-          src="../assets/img/logounsrat.png"
-          alt="Logo UNSRAT"
-          className="position-absolute top-0 start-0 m-4"
-          style={{ width: '80px' }}
-        />
-        <div className="d-flex flex-column justify-content-center align-items-start flex-grow-1 text-start px-4 w-100">
+        <Link to="/" className="position-absolute top-0 start-0 m-4">
+          <img
+            src="/images/roomtech-fix.png"
+            alt="Logo RoomTech"
+            style={{ width: '80px' }}
+          />
+        </Link>
+
+        <div className="mt-auto mb-5">
           <h1 className="fw-bold">Welcome to <br /> RoomTech</h1>
-          <p className="mt-2">
+          <p className="mt-3">
           RoomTech memudahkan semua orang untuk memesan ruangan secara praktis, cepat, dan transparan.
           </p>
         </div>
@@ -93,17 +96,9 @@ const RegisterPage = () => {
             <input type="password" className="form-control" placeholder="Masukkan kata sandi" />
           </div>
 
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" id="rememberMe" />
-            <label className="form-check-label" htmlFor="rememberMe">Ingat Saya</label>
-          </div>
-
           <button type="submit" className="btn btn-purple w-100">Daftar</button>
-          <div className="text-end mt-2">
-            <a href="#">Lupa kata sandi?</a>
-          </div>
           <div className="mt-5 text-center">
-            Sudah punya akun? <a href="/login">Masuk</a>
+            Sudah punya akun? <a href="/login" className="text-decoration-none text-primary">Masuk</a>
           </div>
         </form>
       </div>

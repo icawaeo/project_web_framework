@@ -8,6 +8,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import GedungPage from './pages/GedungPage';
 
 const AppContent = () => {
   const location = useLocation();
@@ -23,6 +24,7 @@ const AppContent = () => {
         <Route path="/profil" element={<Profil />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/:gedungId" element={<GedungPage />} />
       </Routes>
 
       {!hideLayout && <Footer />}

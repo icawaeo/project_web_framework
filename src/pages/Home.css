@@ -1,140 +1,265 @@
-.home-container {
-    padding-top: 80px;
-  }
+body {
+  background: linear-gradient(135deg, #ffffff, #f2f4ff);
+  font-family: "Varela Round", sans-serif;
+}
+
+.container.mt-4 {
+  margin-top: 0 !important;
+}
+
+.hero-section {
+  position: relative;
+  text-align: left;
+  color: white;
+  z-index: 1;
+  width: calc(100% + 40px); /* Lebarkan sedikit dari container */
+  margin: 20px -20px 0 -20px; /* Atas 20px, kiri dan kanan -20px agar tetap ada jarak */
+  border-radius: 20px;
+  overflow: visible; /* agar container di atas tidak terpotong */
+  padding-bottom: 60px;
+  height: 520px; /* Tambahkan ini agar hero lebih tinggi */
+}
+
+.hero-section img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(45%);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1; /* Biar gambar tetap di belakang */
+  border-radius: inherit; /* <- tambahkan ini */
+}
+
+.hero-text {
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  padding-top: 100px;
+  padding-bottom: 40px;
+}
+
+.hero-text h1 {
+  color:#ffffff;
+  font-size: 50px;
+}
+
+.hero-text p {
+  font-size: 18px;
+  font-weight: 300;
+  margin-top: 20px;
+}
+
+.btn-custom {
+  background-color: #6F42C1;
+  font-weight: 500;
+  color: white;
+  border: none;
+  margin: 50px;
+}
+
+.btn-custom:hover { /* Warna button saat hover */
+  background-color: #4e1876; 
+  color:#c3adcd;
+  transition: background-color 0.3s ease;
+}
+
+.blur-container {
+  background-color: rgba(255, 255, 255, 0.8); 
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* untuk Safari */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: rgb(0, 0, 0);
+  text-align: justify;
+  font-size: 18px;
+}
+
+.info-peminjaman {
+  font-weight: 500;
+}
   
-  /* Hero Section */
-  .hero-section {
-    background-image: url('../assets/img/unsratimg2.jpeg');
-    background-size: cover;
-    background-position: center;
-    position: relative;
-    height: 300px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    overflow: hidden;
+.blur-container .text-muted {
+  color: rgb(75, 75, 75) !important;
+  font-size: 13px;
+  text-align: justify;
+}
+
+.tampil-bar {
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.gedung-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}  
+
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.custom-container {
+  max-width: 800px;
+  margin: auto;
+  margin-top: -100px; /* Naik lebih ke dalam hero image */
+  margin-bottom: 40px; /* kasih ruang bawah juga */
+  z-index: 5;
+  position: relative;
+}
+
+.custom-container h3 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.gedung-card:hover .image-container img {
+  filter: blur(6px);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 10px;
+  padding: 20px; 
+  text-align: center;
+}
+
+.gedung-card:hover .overlay {
+  opacity: 1;
+}
+
+label {
+  font-weight: 600;
+  color: rgb(7, 24, 176);
+}
+
+.toggle-link {
+  color: #6F42C1; /* Bootstrap Primary */
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.toggle-link:hover {
+  color: #084298; /* Darker shade for hover */
+  text-decoration: underline;
+}
+
+.scroll-container {
+  max-height: 140px;
+  overflow-y: auto;
+  overflow-x: hidden; /* Hilangkan scrollbar horizontal */
+  padding-right: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #aaa #f0f0f0;
+}
+
+/* Chrome & Safari */
+.scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #999;
+  border-radius: 4px;
+}
+
+
+/* Responsive untuk ukuran layar kecil (smartphone) */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 32px;
   }
-  
-  .hero-overlay {
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 80px;
-    text-align: center;
-  }
-  
-  .hero-content {
-    color: #fff;
-    max-width: 900px;
-    width: 100%;
-  }
-  
-  .hero-title {
-    font-size: 48px;
-    font-weight: 700;
-    color: #d6bcfa;
-  }
-  
-  .hero-subtitle {
-    font-size: 18px;
-    margin-bottom: 30px;
-  }
-  
-  .schedule-box {
-    background: white;
-    color: black;
-    border-radius: 20px;
-    padding: 20px 30px;
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  .schedule-title {
-    font-weight: bold;
-    font-size: 20px;
-  }
-  
-  .schedule-details {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .schedule-label {
-    font-weight: 600;
-  }
-  
-  .schedule-value {
-    color: #666;
+
+  .hero-text p {
     font-size: 14px;
   }
-  
-  .search-box input {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 8px 12px;
+
+  .btn-custom {
+    margin: 20px 0;
+    padding: 10px 20px;
     font-size: 14px;
   }
-  
-  /* Cards Section */
-  .cards-section {
-    padding: 2rem 0;
-  }
-  
-  /* Card Styling */
-  .room-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-    border-radius: 1rem;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #fff;
-    border: 1px solid #eee;
-    padding-top: 0.5rem;
-  }
-  
-  .room-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
-  
-  .image-container {
-    padding: 0.5rem 1rem 1rem 1rem;
-    overflow: hidden;
-  }
-  
-  .card-img-top {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-  }
-  
-  @media (max-width: 576px) {
-    .card-img-top {
-      height: 200px;
-    }
-  }
-  
-  .card-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+
+  .blur-container {
+    font-size: 14px;
     padding: 1rem;
   }
-  
-  /* Map Section */
-  .map-section img {
-    width: 100%;
-    border-radius: 8px;
+
+  .custom-container h3 {
+    font-size: 16px;
   }
-  
+
+  .overlay {
+    padding: 10px;
+  }
+
+  .gedung-card {
+    margin-bottom: 20px;
+  }
+
+  .image-container {
+    height: 180px;
+  }
+
+  .scroll-container {
+    max-height: 150px;
+  }
+
+  .hero-text {
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+}
+
+/* Responsive untuk layar sedang (tablet) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .hero-text h1 {
+    font-size: 40px;
+  }
+
+  .hero-text p {
+    font-size: 16px;
+  }
+
+  .image-container {
+    height: 200px;
+  }
+}

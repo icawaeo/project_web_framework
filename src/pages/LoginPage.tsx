@@ -1,20 +1,41 @@
 // src/pages/LoginPage.jsx
 
-import React from "react";
-import "./LoginPage.css"; // untuk custom style (warna ungu, dsb)
-import logo from "../assets/img/logounsrat.png"; // sesuaikan dengan lokasi logo kamu
+import React, { useState } from "react";
+import "./LoginPage.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  
+    const isCivitas = email.endsWith('@unsrat.ac.id');
+    const userType = isCivitas ? 'civitas' : 'umum';
+  
+    localStorage.setItem('userType', userType);
+  
+    console.log('Login sebagai:', userType);
+  
+    navigate('/');
+  };
+  
+
   return (
     <div className="d-flex vh-100">
+      
       {/* Left side */}
       <div className="col-md-6 d-flex flex-column justify-content-center align-items-start p-5 bg-purple text-white position-relative">
-        <img
-          src="../assets/img/logounsrat.png"
-          alt="Logo UNSRAT"
-          className="position-absolute top-0 start-0 m-4"
-          style={{ width: '80px' }}
-        />
+        <Link to="/" className="position-absolute top-0 start-0 m-4">
+          <img
+            src="/images/roomtech-fix.png"
+            alt="RoomTech Logo"
+            style={{ width: '80px' }}
+          />
+        </Link>
+
         <div className="mt-auto mb-5">
           <h1 className="fw-bold">Welcome to <br /> RoomTech</h1>
           <p className="mt-3" style={{ maxWidth: '400px' }}>
@@ -27,26 +48,40 @@ const LoginPage = () => {
       <div className="col-md-6 d-flex align-items-center justify-content-center">
         <div className="w-75">
           <h2 className="mb-4 fw-bold">Welcome back!</h2>
-          <form>
+          <form onSubmit={handleLogin}>
             <div className="mb-3">
-              <label className="form-label">Email address</label>
-              <input type="email" className="form-control" placeholder="Enter your email" />
+              <label className="form-label">Alamat Email</label>
+              <input
+                type="email"
+                className="form-control"
+                placeholder="Masukkan alamat email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
             <div className="mb-3">
-              <label className="form-label">Password</label>
-              <input type="password" className="form-control" placeholder="Enter your password" />
+              <label className="form-label">Kata Sandi</label>
+              <input
+                type="password"
+                className="form-control"
+                placeholder="Masukkan kata sandi"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
             <div className="d-flex justify-content-between align-items-center mb-3">
               <div className="form-check">
                 <input type="checkbox" className="form-check-input" id="rememberMe" />
-                <label className="form-check-label" htmlFor="rememberMe">Remember me</label>
+                <label className="form-check-label" htmlFor="rememberMe">Ingat saya</label>
               </div>
-              <a href="#" className="text-decoration-none text-primary">Forgot password?</a>
+              <a href="#" className="text-decoration-none text-primary">Lupa kata sandi?</a>
             </div>
-            <button type="submit" className="btn btn-primary w-100">Log in</button>
+            <button type="submit" className="btn btn-purple w-100">Log in</button>
           </form>
           <p className="mt-4 text-center">
-            Don’t have an account? <a href="/register" className="text-decoration-none text-primary">Create account</a>
+            Tidak punya akun? <a href="/register" className="text-decoration-none text-primary">Buat Akun</a>
           </p>
         </div>
       </div>

@@ -1,0 +1,11 @@
+/* src/pages/GedungPage.css */
+.progress {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
